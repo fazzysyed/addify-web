@@ -1,0 +1,6 @@
+.medicationItem {
+  padding: 10px;
+  background-color: #f2eeee;
+  box-sizing: content-box; /* Resetting box-sizing to default */
+  border: none;
+}
