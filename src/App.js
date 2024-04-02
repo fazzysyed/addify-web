@@ -5,7 +5,9 @@ import Medication from "./components/Medication/MedicationPage";
 import First from "./components/First/First";
 import Second from "./components/Second/Second";
 import Six from "./components/Six/Six";
-import FirstQuestionnaire from "./FirstQuestion/FirstQuestion";
+import FirstQuestionnaire from "./components/FirstQuestion/FirstQuestion";
+import SecondQuestionnaire from "./components/SecondQuestion/SecondQuestion";
+
 function App() {
   return <FirstQuestionnaire />;
 }
