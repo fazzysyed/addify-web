@@ -1,6 +1,6 @@
-.answer {
+.answerSecond {
   height: 45px;
-  width: 400px;
+  width: 300px;
   align-self: center;
   border-radius: 30px;
   justify-content: center;
@@ -12,11 +12,12 @@
   display: flex;
 }
 
-.comment {
+.commentSecond {
   margin-top: 30px;
-  height: 45px;
+
+  height: 30px;
   background-color: #fff;
-  width: 400px;
+  width: 300px;
   align-self: center;
   border-radius: 10px;
   justify-content: center;

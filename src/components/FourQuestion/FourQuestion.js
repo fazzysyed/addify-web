@@ -6,7 +6,7 @@ import AnimatedLoader from "../Loader/Loader";
 import CustomProgressBar from "../ProgessBar/ProgressBar";
 import { useNavigate } from "react-router-dom";
 
-const ThirdQuestionnaire = () => {
+const FourQuestionnaire = () => {
   const navigate = useNavigate();
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -84,52 +84,50 @@ const ThirdQuestionnaire = () => {
         <div style={styles.bottom}>
           {[question[currentIndex]].map((item) => {
             return (
-              <div>
-                <div style={{ width: "calc(100% - 100px)" }}>
-                  <p style={{ ...styles.headingBottom }}>{item.question}</p>
-                  <div style={{ height: "20px" }} />
-                  <div style={{ width: "calc(100% - 80px)", margin: "0 auto" }}>
-                    <div
-                      style={{
-                        backgroundColor: "#FFFFFF",
-                        height: "80px",
-                        display: "flex",
-                        flexDirection: "row",
-                        borderRadius: "15px",
+              <div style={{ width: "calc(100% - 100px)" }}>
+                <p style={{ ...styles.headingBottom }}>{item.question}</p>
+                <div style={{ height: "20px" }} />
+                <div style={{ width: "calc(100% - 80px)", margin: "0 auto" }}>
+                  <div
+                    style={{
+                      backgroundColor: "#FFFFFF",
+                      height: "80px",
+                      display: "flex",
+                      flexDirection: "row",
+                      borderRadius: "15px",
 
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                      }}
-                    >
-                      {data.map((item, index) => (
-                        <button
-                          key={index}
-                          onClick={() => {
-                            showNextItem(item);
-                          }}
-                          style={{
-                            cursor: "pointer",
-                            width: "calc((100% - 80px) / 7)",
-                            borderTopLeftRadius: index === 0 ? "15px" : "0",
-                            borderTopRightRadius: index === 5 ? "15px" : "0",
-                            borderBottomLeftRadius: index === 0 ? "15px" : "0",
-                            borderBottomRightRadius: index === 5 ? "15px" : "0",
-                            backgroundColor: "#FFFFFF",
-                            boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.3)",
-                            border:
-                              index === 0 || index === 5
-                                ? "none"
-                                : "1px solid #ccc",
-                            height: "100%",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <span style={{ ...styles.percentage }}>
-                            {item.text}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    {data.map((item, index) => (
+                      <button
+                        key={index}
+                        onClick={() => {
+                          showNextItem(item);
+                        }}
+                        style={{
+                          cursor: "pointer",
+                          width: "calc((100% - 80px) / 7)",
+                          borderTopLeftRadius: index === 0 ? "15px" : "0",
+                          borderTopRightRadius: index === 5 ? "15px" : "0",
+                          borderBottomLeftRadius: index === 0 ? "15px" : "0",
+                          borderBottomRightRadius: index === 5 ? "15px" : "0",
+                          backgroundColor: "#FFFFFF",
+                          boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.3)",
+                          border:
+                            index === 0 || index === 5
+                              ? "none"
+                              : "1px solid #ccc",
+                          height: "100%",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <span style={{ ...styles.percentage }}>
+                          {item.text}
+                        </span>
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -149,7 +147,7 @@ const ThirdQuestionnaire = () => {
   );
 };
 
-export default ThirdQuestionnaire;
+export default FourQuestionnaire;
 
 const styles = {
   container: {
@@ -175,10 +173,12 @@ const styles = {
     justifyContent: "space-between",
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
   },
   heading: {
     fontFamily: "Poppins-Bold",
-    fontSize: 24,
+    fontSize: "calc(16px + 1vw)", // Responsive font size based on viewport width
+
     display: "flex",
     alignSelf: "center",
     color: "#261E35",
@@ -188,7 +188,7 @@ const styles = {
   },
   headingBottom: {
     fontFamily: "Poppins-Bold",
-    fontSize: 34,
+    fontSize: "calc(16px + 1vw)",
     alignSelf: "center",
     textAlign: "center",
     marginVertical: 50,
@@ -209,7 +209,7 @@ const styles = {
     fontSize: 14,
     textAlign: "center",
     marginVertical: 5,
-    width: 100,
+    // width: 100,
   },
   answer: {
     height: 55,

@@ -1,6 +1,6 @@
-.answer {
+.answerSix {
   height: 60px;
-  width: 800px;
+  width: 400px;
 
   align-self: center;
   border-radius: 30px;
@@ -28,8 +28,8 @@
   margin-bottom: 20px;
 }
 
-.answerTitle {
+.answerTitleSix {
   font-family: "Poppins-SemiBold";
   color: #261e35;
-  font-size: 20px;
+  font-size: 12px;
 }

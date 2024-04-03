@@ -10,12 +10,12 @@ import Five from "./components/Five/Five";
 import Six from "./components/Six/Six";
 import FirstQuestionnaire from "./components/FirstQuestion/FirstQuestion";
 import SecondQuestionnaire from "./components/SecondQuestion/SecondQuestion";
-import ThridQuestionnaire from "./components/ThirdQuestion/ThirdQuestion";
+import ThirdQuestionnaire from "./components/ThirdQuestion/ThirdQuestion";
 import FourthQuestionnaire from "./components/FourQuestion/FourQuestion";
 import FiveQuestionnaire from "./components/FiveQuestion/FiveQuestion";
 import SixQuestionnaire from "./components/SixQuestion/SixQuestion";
 import { BrowserRouter, Route, Routes, HashRouter } from "react-router-dom";
-import ThirdQuestionnaire from "./components/FourQuestion/FourQuestion";
+
 import Third from "./components/Third/Third";
 
 function App() {

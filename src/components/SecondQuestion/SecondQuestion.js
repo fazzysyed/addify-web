@@ -106,7 +106,7 @@ const SecondQuestionnaire = () => {
                     {data.map((item) => (
                       <div onClick={() => showNextItem(item)} key={item.key}>
                         <div
-                          className="answer"
+                          className="answerSecond"
                           style={{
                             backgroundColor:
                               selectedItem && selectedItem.key === item.key
@@ -130,7 +130,7 @@ const SecondQuestionnaire = () => {
                     ))}
 
                     <input
-                      className="comment"
+                      className="commentSecond"
                       type="text"
                       value={comment}
                       onChange={(e) => setComment(e.target.value)}
@@ -142,6 +142,25 @@ const SecondQuestionnaire = () => {
               </div>
             );
           })}
+
+          <div onClick={() => showNextItem()}>
+            <div
+              className="answerSecond"
+              style={{
+                backgroundColor: "#FFF",
+                marginBottom: 20,
+              }}
+            >
+              <p
+                className="answerTitle"
+                style={{
+                  color: "#000",
+                }}
+              >
+                Next
+              </p>
+            </div>
+          </div>
           <div
             style={{ margin: "0 auto", marginBottom: 50, textAlign: "center" }}
           >
@@ -182,10 +201,12 @@ const styles = {
     justifyContent: "space-between",
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
   },
   heading: {
     fontFamily: "Poppins-Bold",
-    fontSize: 24,
+    fontSize: "calc(16px + 1vw)", // Responsive font size based on viewport width
+
     display: "flex",
     alignSelf: "center",
     color: "#261E35",
@@ -195,11 +216,11 @@ const styles = {
   },
   headingBottom: {
     fontFamily: "Poppins-Bold",
-    fontSize: 34,
+    fontSize: "calc(16px + 1vw)",
     alignSelf: "center",
     textAlign: "center",
-    marginVertical: 50,
-    marginTop: 50,
+
+    marginTop: 20,
     color: "#FFFFFF",
   },
   headingQuestion: {
@@ -216,7 +237,7 @@ const styles = {
     fontSize: 14,
     textAlign: "center",
     marginVertical: 5,
-    width: 100,
+    // width: 100,
   },
   answer: {
     height: 55,

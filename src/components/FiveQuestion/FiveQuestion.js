@@ -103,7 +103,7 @@ const FiveQuestionnaire = () => {
                         key={item.key}
                       >
                         <div
-                          className="answer"
+                          className="answerFive"
                           style={{
                             backgroundColor:
                               selectedItem && selectedItem.key === item.key
@@ -170,10 +170,12 @@ const styles = {
     justifyContent: "space-between",
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
   },
   heading: {
     fontFamily: "Poppins-Bold",
-    fontSize: 24,
+    fontSize: "calc(16px + 1vw)", // Responsive font size based on viewport width
+
     display: "flex",
     alignSelf: "center",
     color: "#261E35",
@@ -183,11 +185,11 @@ const styles = {
   },
   headingBottom: {
     fontFamily: "Poppins-Bold",
-    fontSize: 34,
+    fontSize: "calc(16px + 1vw)",
     alignSelf: "center",
     textAlign: "center",
-    // marginVertical: 50,
-    marginTop: 20,
+    marginVertical: 50,
+    marginTop: 100,
     color: "#FFFFFF",
   },
   headingQuestion: {
@@ -204,7 +206,7 @@ const styles = {
     fontSize: 14,
     textAlign: "center",
     marginVertical: 5,
-    width: 100,
+    // width: 100,
   },
   answer: {
     height: 55,
