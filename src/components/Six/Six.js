@@ -4,15 +4,13 @@ import Pressable from "../../components/PressableIcon/PressableIcon";
 import ThirdImage from "../../assets/images/third.svg";
 import Button from "../../components/Button/Button";
 
+import { useNavigate } from "react-router-dom";
+
 const Six = () => {
-  useEffect(() => {
-    // console.log(location.state);
-  }, []);
+  const navigate = useNavigate();
 
   const handleStart = () => {
-    // history.replace("/Questionnaire", {
-    //   userId: location.state.userId,
-    // });
+    navigate("/six-question");
   };
 
   return (
@@ -32,7 +30,7 @@ const Six = () => {
         </div>
 
         <div style={{ alignSelf: "center", marginTop: 50 }}>
-          <Button title="Done" onPress={handleStart} />
+          <Button title="Start" onPress={handleStart} />
         </div>
       </div>
     </div>

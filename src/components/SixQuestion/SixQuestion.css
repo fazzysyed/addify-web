@@ -1,0 +1,35 @@
+.answer {
+  height: 60px;
+  width: 800px;
+
+  align-self: center;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+  display: flex;
+}
+
+.comment {
+  margin-top: 30px;
+  height: 45px;
+  background-color: #fff;
+  width: 400px;
+  align-self: center;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins-Regular";
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.answerTitle {
+  font-family: "Poppins-SemiBold";
+  color: #261e35;
+  font-size: 20px;
+}

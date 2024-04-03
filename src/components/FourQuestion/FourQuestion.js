@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from "react";
 
 import { useNavigation, useRoute } from "react-router-dom";
-import { Cadra } from "../../assets/Data/Cadra";
+import { Screening } from "../../assets/Data/Screening";
 import AnimatedLoader from "../Loader/Loader";
 import CustomProgressBar from "../ProgessBar/ProgressBar";
 import { useNavigate } from "react-router-dom";
 
-import "./SecondQuestion.css";
-const SecondQuestionnaire = () => {
+const ThirdQuestionnaire = () => {
   const navigate = useNavigate();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
-  const [question, setQuestions] = useState([...Cadra]);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [question, setQuestions] = useState([...Screening]);
 
   const data = [
     { key: "1", text: "Not at all", score: 0 },
-    { key: "2", text: "Sometimes", score: 1 },
-    { key: "3", text: "Often", score: 2 },
-    { key: "4", text: "All the time", score: 3 },
+    { key: "2", text: "Just a little", score: 1 },
+    { key: "3", text: "Somewhat", score: 2 },
+    { key: "4", text: "Moderately", score: 3 },
+    { key: "5", text: "Quite a lot", score: 4 },
+    { key: "6", text: "Very much", score: 5 },
 
     // Add more data items here
   ];
+
   //   const handleAddArraysToUser = async () => {
   //     try {
   //       setLoading(true);
@@ -65,7 +66,7 @@ const SecondQuestionnaire = () => {
       updatedQuestions[currentIndex]["score"] = newValue.score;
 
       setQuestions(updatedQuestions);
-      navigate("/third");
+      navigate("/five");
 
       // handleAddArraysToUser();
     }
@@ -84,59 +85,51 @@ const SecondQuestionnaire = () => {
           {[question[currentIndex]].map((item) => {
             return (
               <div>
-                <div
-                  style={{
-                    width: "calc(100% - 100px)",
-                    display: "contents",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                >
+                <div style={{ width: "calc(100% - 100px)" }}>
                   <p style={{ ...styles.headingBottom }}>{item.question}</p>
                   <div style={{ height: "20px" }} />
-                  <div
-                    style={{
-                      width: "calc(100% - 80px)",
-                      margin: "0 auto",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center", // Aligning the content to the center
-                    }}
-                  >
-                    {data.map((item) => (
-                      <div onClick={() => showNextItem(item)} key={item.key}>
-                        <div
-                          className="answer"
+                  <div style={{ width: "calc(100% - 80px)", margin: "0 auto" }}>
+                    <div
+                      style={{
+                        backgroundColor: "#FFFFFF",
+                        height: "80px",
+                        display: "flex",
+                        flexDirection: "row",
+                        borderRadius: "15px",
+
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      {data.map((item, index) => (
+                        <button
+                          key={index}
+                          onClick={() => {
+                            showNextItem(item);
+                          }}
                           style={{
-                            backgroundColor:
-                              selectedItem && selectedItem.key === item.key
-                                ? "gray"
-                                : "#FFF",
+                            cursor: "pointer",
+                            width: "calc((100% - 80px) / 7)",
+                            borderTopLeftRadius: index === 0 ? "15px" : "0",
+                            borderTopRightRadius: index === 5 ? "15px" : "0",
+                            borderBottomLeftRadius: index === 0 ? "15px" : "0",
+                            borderBottomRightRadius: index === 5 ? "15px" : "0",
+                            backgroundColor: "#FFFFFF",
+                            boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.3)",
+                            border:
+                              index === 0 || index === 5
+                                ? "none"
+                                : "1px solid #ccc",
+                            height: "100%",
+                            justifyContent: "center",
                           }}
                         >
-                          <p
-                            className="answerTitle"
-                            style={{
-                              color:
-                                selectedItem && selectedItem.key === item.key
-                                  ? "#FFF"
-                                  : "#000",
-                            }}
-                          >
+                          <span style={{ ...styles.percentage }}>
                             {item.text}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-
-                    <input
-                      className="comment"
-                      type="text"
-                      value={comment}
-                      onChange={(e) => setComment(e.target.value)}
-                      placeholder="Enter Comment"
-                      style={{ color: "#828282" }}
-                    />
+                          </span>
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -145,8 +138,8 @@ const SecondQuestionnaire = () => {
           <div
             style={{ margin: "0 auto", marginBottom: 50, textAlign: "center" }}
           >
-            <CustomProgressBar progress={(currentQuestion / 36) * 100} />
-            <p style={styles.headingQuestion}>{currentQuestion}/36</p>
+            <CustomProgressBar progress={(currentQuestion / 24) * 100} />
+            <p style={styles.headingQuestion}>{currentQuestion}/24</p>
           </div>
         </div>
       </div>
@@ -156,7 +149,7 @@ const SecondQuestionnaire = () => {
   );
 };
 
-export default SecondQuestionnaire;
+export default ThirdQuestionnaire;
 
 const styles = {
   container: {
@@ -199,7 +192,7 @@ const styles = {
     alignSelf: "center",
     textAlign: "center",
     marginVertical: 50,
-    marginTop: 50,
+    marginTop: 100,
     color: "#FFFFFF",
   },
   headingQuestion: {

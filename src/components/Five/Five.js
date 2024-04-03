@@ -3,16 +3,13 @@ import React, { useEffect } from "react";
 import Pressable from "../../components/PressableIcon/PressableIcon";
 import ThirdImage from "../../assets/images/second.svg";
 import Button from "../../components/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const Five = () => {
-  useEffect(() => {
-    // console.log(location.state);
-  }, []);
+  const navigate = useNavigate();
 
   const handleStart = () => {
-    // history.replace("/Questionnaire", {
-    //   userId: location.state.userId,
-    // });
+    navigate("/five-question");
   };
 
   return (

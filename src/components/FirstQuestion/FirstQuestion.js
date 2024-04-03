@@ -4,7 +4,11 @@ import { useNavigation, useRoute } from "react-router-dom";
 import { ExecutiveQuestions } from "../../assets/Data/Executive";
 import AnimatedLoader from "../Loader/Loader";
 import CustomProgressBar from "../ProgessBar/ProgressBar";
+import { useNavigate } from "react-router-dom";
+
 const FirstQuestionnaire = () => {
+  const navigate = useNavigate();
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [comment, setComment] = useState("");
@@ -61,6 +65,9 @@ const FirstQuestionnaire = () => {
       updatedQuestions[currentIndex]["score"] = newValue.score;
 
       setQuestions(updatedQuestions);
+
+      navigate("/second");
+
       // handleAddArraysToUser();
     }
   };

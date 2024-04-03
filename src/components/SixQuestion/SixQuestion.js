@@ -1,30 +1,18 @@
 import React, { useEffect, useState } from "react";
 
 import { useNavigation, useRoute } from "react-router-dom";
-import { Cadra } from "../../assets/Data/Cadra";
+import { Beck } from "../../assets/Data/Beck";
 import AnimatedLoader from "../Loader/Loader";
 import CustomProgressBar from "../ProgessBar/ProgressBar";
-import { useNavigate } from "react-router-dom";
-
-import "./SecondQuestion.css";
-const SecondQuestionnaire = () => {
-  const navigate = useNavigate();
-
+import "./SixQuestion.css";
+const SixQuestionnaire = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
-  const [question, setQuestions] = useState([...Cadra]);
+  const [question, setQuestions] = useState([...Beck]);
   const [selectedItem, setSelectedItem] = useState(null);
 
-  const data = [
-    { key: "1", text: "Not at all", score: 0 },
-    { key: "2", text: "Sometimes", score: 1 },
-    { key: "3", text: "Often", score: 2 },
-    { key: "4", text: "All the time", score: 3 },
-
-    // Add more data items here
-  ];
   //   const handleAddArraysToUser = async () => {
   //     try {
   //       setLoading(true);
@@ -38,36 +26,27 @@ const SecondQuestionnaire = () => {
   //     }
   //   };
 
-  const showNextItem = (newValue) => {
-    console.warn(newValue);
+  const showNextItem = (newValue, score) => {
     if (currentIndex < question.length - 1) {
       const updatedQuestions = [...question];
-
-      // const isReversed =
-      //   updatedQuestions[currentIndex].questionId !== undefined;
-
-      // // If it's reversed, invert the score
-      // if (isReversed) {
-      //   score = 6 - score;
-
-      // }
-
-      updatedQuestions[currentIndex]["answer"] = newValue.text;
-      updatedQuestions[currentIndex]["score"] = newValue.score;
+      updatedQuestions[currentIndex]["answer"] = newValue;
+      updatedQuestions[currentIndex]["score"] = score;
 
       setQuestions(updatedQuestions);
       setCurrentIndex(currentIndex + 1);
       setCurrentQuestion(currentQuestion + 1);
+
+      setSelectedItem(null);
     } else {
       const updatedQuestions = [...question];
-
-      updatedQuestions[currentIndex]["answer"] = newValue.text;
-      updatedQuestions[currentIndex]["score"] = newValue.score;
+      updatedQuestions[currentIndex]["answer"] = newValue;
+      updatedQuestions[currentIndex]["score"] = score;
 
       setQuestions(updatedQuestions);
-      navigate("/third");
 
-      // handleAddArraysToUser();
+      console.log(updatedQuestions);
+
+      setSelectedItem(null);
     }
   };
 
@@ -76,8 +55,9 @@ const SecondQuestionnaire = () => {
       <div style={styles.container}>
         <div style={styles.top}>
           <p style={styles.heading}>
-            Please indicate how strongly the following statements apply to you
-            by tapping on the appropriate degree from the scale below
+            Please read each question, assess your feelings, and select the
+            answer on the scale that gives the best answer for you for each
+            question.
           </p>
         </div>
         <div style={styles.bottom}>
@@ -103,8 +83,11 @@ const SecondQuestionnaire = () => {
                       alignItems: "center", // Aligning the content to the center
                     }}
                   >
-                    {data.map((item) => (
-                      <div onClick={() => showNextItem(item)} key={item.key}>
+                    {item.answers.map((item) => (
+                      <div
+                        onClick={() => showNextItem(item.name, item.score)}
+                        key={item.key}
+                      >
                         <div
                           className="answer"
                           style={{
@@ -123,20 +106,11 @@ const SecondQuestionnaire = () => {
                                   : "#000",
                             }}
                           >
-                            {item.text}
+                            {item.name}
                           </p>
                         </div>
                       </div>
                     ))}
-
-                    <input
-                      className="comment"
-                      type="text"
-                      value={comment}
-                      onChange={(e) => setComment(e.target.value)}
-                      placeholder="Enter Comment"
-                      style={{ color: "#828282" }}
-                    />
                   </div>
                 </div>
               </div>
@@ -145,8 +119,8 @@ const SecondQuestionnaire = () => {
           <div
             style={{ margin: "0 auto", marginBottom: 50, textAlign: "center" }}
           >
-            <CustomProgressBar progress={(currentQuestion / 36) * 100} />
-            <p style={styles.headingQuestion}>{currentQuestion}/36</p>
+            <CustomProgressBar progress={(currentQuestion / 21) * 100} />
+            <p style={styles.headingQuestion}>{currentQuestion}/21</p>
           </div>
         </div>
       </div>
@@ -156,7 +130,7 @@ const SecondQuestionnaire = () => {
   );
 };
 
-export default SecondQuestionnaire;
+export default SixQuestionnaire;
 
 const styles = {
   container: {
